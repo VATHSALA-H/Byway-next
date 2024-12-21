@@ -63,7 +63,7 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-const Login = ({ onClose, onLoginSuccess }) => {
+export function Login({ onClose, onLoginSuccess }){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -105,4 +105,3 @@ const Login = ({ onClose, onLoginSuccess }) => {
   );
 };
 
-export default Login;
