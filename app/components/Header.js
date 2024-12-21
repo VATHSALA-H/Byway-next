@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useState, useEffect } from 'react'; 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Login from './Login';
+import Page from '../Login/page'
 
 export default function Header() {
   const router = useRouter();
@@ -56,7 +56,7 @@ export default function Header() {
         </RightNav>
       </NavbarContainer>
       {showLogin && (
-        <Login
+        <Page
           onClose={toggleLoginPopup}
           onLoginSuccess={() => {
             setIsLoggedIn(true);
