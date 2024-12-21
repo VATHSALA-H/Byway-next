@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useState, useEffect } from 'react'; 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Login from '../Login/page'
+import Login from './Login';
 
 export default function Header() {
   const router = useRouter();

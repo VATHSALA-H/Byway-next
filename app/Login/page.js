@@ -63,7 +63,7 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export function Login({ onClose, onLoginSuccess }){
+export function Page({ onClose, onLoginSuccess }){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
