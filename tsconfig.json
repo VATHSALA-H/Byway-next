@@ -18,10 +18,17 @@
         "name": "next"
       }
     ],
+    "checkJs": false,
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",                 // Include .js files for processing
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

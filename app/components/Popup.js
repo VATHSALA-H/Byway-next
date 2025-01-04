@@ -1,4 +1,6 @@
-"use client"
+// components/Popup.js
+"use client";
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -10,8 +12,8 @@ export default function Popup({ onClose, onLoginSuccess }) {
   const handleLogin = async () => {
     try {
       const response = await axios.post('https://fakestoreapi.com/auth/login', {
-        username: username, 
-        password: password, 
+        username,
+        password,
       });
       localStorage.setItem('token', response.data.token);
       onClose(); 
@@ -43,7 +45,8 @@ export default function Popup({ onClose, onLoginSuccess }) {
       </PopupContent>
     </PopupContainer>
   );
-};
+}
+
 
 
 const PopupContainer = styled.div`

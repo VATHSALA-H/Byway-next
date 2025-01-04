@@ -1,10 +1,11 @@
-"use client"
+// Header.js
+"use client";
 
 import styled from 'styled-components';   
 import { useState, useEffect } from 'react'; 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Popup from '../Login/page';  // Ensure default import from page.js
+import Popup from '../components/Popup';  // Corrected path to the Popup component
 
 export default function Header() {
   const router = useRouter();
@@ -41,8 +42,8 @@ export default function Header() {
           <StyledIcon src="/assets/cart.png" alt="cart" width={10} height={10} />
           {isLoggedIn ? (
             <>
-              <StyledIcon src="/assets/like.png" alt='like' width={10} height={10} />
-              <StyledIcon src="/assets/bell.png" alt='bell' width={10} height={10} />
+              <StyledIcon src="/assets/like.png" alt="like" width={10} height={10} />
+              <StyledIcon src="/assets/bell.png" alt="bell" width={10} height={10} />
               <StyledLink onClick={handleLogout}>Logout</StyledLink>
             </>
           ) : (
@@ -65,6 +66,7 @@ export default function Header() {
     </>
   );
 }
+
 
 
 const NavbarContainer = styled.div`
