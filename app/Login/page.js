@@ -3,6 +3,49 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
+export default function Popup({ onClose, onLoginSuccess }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('https://fakestoreapi.com/auth/login', {
+        username: username, 
+        password: password, 
+      });
+      localStorage.setItem('token', response.data.token);
+      onClose(); 
+      onLoginSuccess();
+    } catch (error) {
+      alert('Login failed!');
+      console.error(error);
+    }
+  };
+
+  return (
+    <PopupContainer>
+      <PopupContent>
+        <CloseButton onClick={onClose}>X</CloseButton>
+        <h2>Login</h2>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleLogin}>Submit</button>
+      </PopupContent>
+    </PopupContainer>
+  );
+};
+
+
 const PopupContainer = styled.div`
   position: fixed;
   top: 0;
@@ -62,46 +105,3 @@ const CloseButton = styled.button`
   right: 10px;
   cursor: pointer;
 `;
-
-export default function Popup({ onClose, onLoginSuccess }){
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post('https://fakestoreapi.com/auth/login', {
-        username: username, 
-        password: password, 
-      });
-      localStorage.setItem('token', response.data.token);
-      onClose(); 
-      onLoginSuccess();
-    } catch (error) {
-      alert('Login failed!');
-      console.error(error);
-    }
-  };
-
-  return (
-    <PopupContainer>
-      <PopupContent>
-        <CloseButton onClick={onClose}>X</CloseButton>
-        <h2>Login</h2>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleLogin}>Submit</button>
-      </PopupContent>
-    </PopupContainer>
-  );
-};
-

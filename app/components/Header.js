@@ -1,17 +1,15 @@
 "use client"
 
-import styled from 'styled-components'   
+import styled from 'styled-components';   
 import { useState, useEffect } from 'react'; 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import {Popup} from '../Login/page'
+import Popup from '../Login/page';  // Ensure default import from page.js
 
 export default function Header() {
   const router = useRouter();
   const [showLogin, setShowLogin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -32,20 +30,20 @@ export default function Header() {
 
   return (
     <>
-          <NavbarContainer>
-        <Link href="/" style={{textDecoration:'none'}}>
+      <NavbarContainer>
+        <Link href="/" style={{ textDecoration: 'none' }}>
           <LogoContainer>
-              <StyledLogo src="/assets/logo.png" alt="logo"  width={10} height={10} />
-              <StyledHeading>Byway</StyledHeading>  
+            <StyledLogo src="/assets/logo.png" alt="logo" width={10} height={10} />
+            <StyledHeading>Byway</StyledHeading>  
           </LogoContainer>
         </Link>
         <RightNav>
-          <StyledIcon src="/assets/cart.png" alt="cart"  width={10} height={10} />
+          <StyledIcon src="/assets/cart.png" alt="cart" width={10} height={10} />
           {isLoggedIn ? (
             <>
-            <StyledIcon src="/assets/like.png" alt='like'  width={10} height={10}/>
-            <StyledIcon src="/assets/bell.png" alt='bell'  width={10} height={10}/>
-            <StyledLink onClick={handleLogout}>Logout</StyledLink>
+              <StyledIcon src="/assets/like.png" alt='like' width={10} height={10} />
+              <StyledIcon src="/assets/bell.png" alt='bell' width={10} height={10} />
+              <StyledLink onClick={handleLogout}>Logout</StyledLink>
             </>
           ) : (
             <>
@@ -61,11 +59,13 @@ export default function Header() {
           onLoginSuccess={() => {
             setIsLoggedIn(true);
             setShowLogin(false);
-          }}/>
-          )}
+          }}
+        />
+      )}
     </>
-  )
+  );
 }
+
 
 const NavbarContainer = styled.div`
   display: flex;
