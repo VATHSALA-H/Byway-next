@@ -63,7 +63,7 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export default function Page({ onClose, onLoginSuccess }){
+export default function Popup({ onClose, onLoginSuccess }){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
